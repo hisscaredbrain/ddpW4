@@ -1,0 +1,13 @@
+name: ShinyDiamond
+title: ShinyDiamond
+username:
+account: curiousity
+server: shinyapps.io
+hostUrl: https://api.shinyapps.io/v1
+appId: 8923969
+bundleId: 7122240
+url: https://curiousity.shinyapps.io/ShinyDiamond/
+when: 1682189616.33281
+lastSyncTime: 1682189616.33282
+asMultiple: FALSE
+asStatic: FALSE

@@ -1,0 +1,64 @@
+---
+title: "Analyze Diamonds"
+author: "Harsha"
+date: "2023-04-22"
+output: ioslides_presentation
+---
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE)
+```
+## Objective
+This document has been created as a part of Week 4 assignment in Develop Data Products course. There are two parts of the assignment. Firstly, a Shiny Application has to be done and the then a presentation (you're looking at it now!) pitching the application.
+
+## Diamond Data
+
+For creating this Shiny application, we use the dismond dataset from ggplot2.
+
+A dataset containing the prices and other attributes of almost 54,000 diamonds. We are however interested in only a subset of variables - price, weight, cut, color, clarity 
+
+```{r, echo= FALSE}
+tableData <- data.frame(c("carat", "cut", "color", "clarity", "price"),
+                        c("Weight of the diamond (0.2–5.01)",
+                          "Cut Quality (Fair, Good, Very Good, Premium, Ideal)",
+                          "Diamond colour, from D (best) to J (worst)",
+                          "A measurement of how clear the diamond is (I1 (worst), SI2, SI1, VS2, VS1, VVS2, VVS1, IF (best))",
+                          "in US dollars (326–18,823)"
+                          )
+                        )
+knitr::kable(tableData,col.names=c("Variable","Description"),align="ll",
+             format="html")
+```
+
+## Data Sample
+```{r, echo = TRUE}
+library(ggplot2)
+# Get a subset of the database with only the variables that interest us
+diamondData <- diamonds[, c("carat", "cut", "color", "clarity", "price")]
+head(diamondData, n=3)
+```
+
+## Shiny Application
+The application lets one examine the relationship between various characteristics of the diamond with its price. The application allows users to select characteristics to examine their univariate linear regression results in relation to price. The box plot is shown in a different tab, where users can choose to include or omit to show outliers.
+
+## Screenshot - Box Plot
+```{r fig.width=8,fit.height=4, echo=FALSE}
+library(png)
+library(grid)
+img <- readPNG("Images/BoxPlot.png")
+   grid.raster(img)
+```
+
+## Screenshot - Regression Model
+```{r fig.width=8,fit.height=4, echo=FALSE}
+library(png)
+library(grid)
+img <- readPNG("Images/RegressionPlot.png")
+   grid.raster(img)
+```
+
+## Code
+The code for the application can be found in the GitHub repository located here:
+- [https://github.com/hisscaredbrain/ddpW4/](https://github.com/hisscaredbrain/ddpW4/)
+
+The Application is hosted at
+- [https://curiousity.shinyapps.io/ShinyDiamond/?_ga=2.121757003.1917527202.1682189328-413052390.1682189328](https://curiousity.shinyapps.io/ShinyDiamond/?_ga=2.121757003.1917527202.1682189328-413052390.1682189328)
